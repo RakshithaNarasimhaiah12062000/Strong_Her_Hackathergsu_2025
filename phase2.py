@@ -1,14 +1,14 @@
 # phase2_rag_chain.py
 
 from dotenv import load_dotenv
-from langchain_community.vectorstores import Chroma   # was: FAISS
+from langchain_community.vectorstores import FAISS   # was: Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 load_dotenv()
 
-def load_vector_db(path="chroma_index"):  # was: "faiss_index"
+def load_vector_db(path="faiss_index"):  # was: "chroma_index"
     """Load Chroma vector database."""
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
     return Chroma(
@@ -19,7 +19,7 @@ def load_vector_db(path="chroma_index"):  # was: "faiss_index"
 def create_rag_chain():
     """Construct a RetrievalQA chain for HealthHER use cases."""
     vector_db = load_vector_db()
-    # Basic retriever — you could add metadata filter later
+    # Basic retriever
     retriever = vector_db.as_retriever(search_kwargs={"k": 4})
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.5)
 
@@ -39,7 +39,6 @@ Answer:
 """
     )
 
-    # Use “stuff” chain type (inject all retrieved docs into prompt). Could also use map_reduce, etc.
     return RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
