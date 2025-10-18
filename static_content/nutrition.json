@@ -1,0 +1,5 @@
+{
+  "No restriction": ["Rice and lentils", "Boiled eggs", "Seasonal fruits"],
+  "Vegetarian": ["Tofu scramble", "Oats porridge with banana", "Steamed veggies"],
+  "Allergy-aware": ["Gluten-free rice pasta", "Nut-free hummus", "Boiled potatoes"]
+}
