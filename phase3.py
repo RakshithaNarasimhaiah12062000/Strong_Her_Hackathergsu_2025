@@ -201,7 +201,6 @@ def load_meal_data():
 
 MEALS_DF, BOOSTERS_DF = load_meal_data()
 
-
 # Load static content JSONs
 @st.cache_data
 def load_static_content():
@@ -234,9 +233,6 @@ def load_static_content():
 
 guides_data, nutrition_data, templates_data, how_to_data = load_static_content()
 
-
-# Navigation / Routing
-# -----------------------------
 # Navigation / Routing (FULL)
 # -----------------------------
 PAGES = {
@@ -248,7 +244,6 @@ PAGES = {
     "⚖️ Safety & Rights": "legal",              # Empowerment & protection resources
     "💵 Financial Wellness": "finance",         # Stability & long-term well-being (still important but secondary)
 }
-
 
 # Initialize current page once
 if "page" not in st.session_state:
@@ -265,7 +260,6 @@ if "pending_nav" in st.session_state:
 # --- Sidebar / menu (index-driven, no key mutation) ---
 labels = list(PAGES.keys())
 current_label = PAGE_LABEL_BY_CODE[st.session_state["page"]]
-
 
 # --- SIDEBAR HEADER / BRANDING ---
 st.sidebar.markdown("""
@@ -420,11 +414,6 @@ if page == "home":
         if st.button("Find Local Help"):
             st.session_state["pending_nav"] = "community"   # go to Community Finder
             st.rerun()
-
-    # Footer
-    # st.markdown('</div>', unsafe_allow_html=True)
-    # st.markdown('<div class="footer">We don’t store PII during demo</div>', unsafe_allow_html=True)
-
 
 # --- Page: Parenting Hub ---
 elif page == "parenting":
@@ -646,11 +635,6 @@ elif page == "parenting":
             else:
                 st.info("Write a few words before saving.")
 
-    # with cols[1]:
-    #     if st.button("Clear today’s note", key="clear_reflection_btn"):
-    #         st.session_state["journal_note"] = ""
-    #         st.rerun()
-
     # Show previous entries (latest first)
     if st.session_state["journal_entries"]:
         st.markdown("### 📔 Your past reflections")
@@ -663,8 +647,6 @@ elif page == "parenting":
         st.markdown("<div class='muted'>No entries yet — your first note will appear here.</div>", unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
-
-
 
 # --- Page: Legal Rights ---
 elif page == "legal":
@@ -680,8 +662,6 @@ elif page == "legal":
         if st.button(t):
             st.write(ask_chat(f"For {region}, explain {t} rights."))
     
-
-
 # --- Page: Community Finder ---
 elif page == "community":
     st.markdown('<div class="glass-box">', unsafe_allow_html=True)
@@ -694,8 +674,6 @@ elif page == "community":
     
     st.markdown("</div>", unsafe_allow_html=True)
 
-
-# --- Page: Postpartum Care ---
 # --- Page: Postpartum Care ---
 elif page == "postpartum":
     # --- Pretty slider & mood badge styles (scoped to this page) ---
@@ -889,7 +867,6 @@ elif page == "postpartum":
     st.markdown("---")
 
     # ---------------- Body Recovery & SOS ----------------
-    # ---------------- Body Recovery & SOS ----------------
     st.subheader("Body Recovery")
 
     recovery_guides = {
@@ -974,8 +951,6 @@ elif page == "postpartum":
     st.markdown("- 🌐 [Postpartum Support International](https://www.postpartum.net/) – 24/7 helpline: 1-800-944-4773")
 
     st.markdown("</section>", unsafe_allow_html=True)
-
-
 
 # --- Page: Financial Wellness ---
 elif page == "finance":
@@ -1137,7 +1112,6 @@ elif page == "meals":
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-    # --- Mom's Nourishment Section ---
 # --- MOM'S NOURISHMENT SECTION ---
 
     st.markdown("### 🌿 For Mom — Nourish Yourself Too")
