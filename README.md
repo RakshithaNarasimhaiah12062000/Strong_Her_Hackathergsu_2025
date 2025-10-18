@@ -1,28 +1,42 @@
-# HackHers2025_GSU — Strong Her
+# 💪 StrongHer — AI Wellness Companion for Single Mothers  
+**HackHers 2025 | Georgia State University**  
+By: Avantika Balaji, Palak Kakani, Rakshitha Narasimhaiah, Shreya Vyas
 
-AI-powered Parenting & Postpartum Wellness hub using a RAG pipeline.
+## 🌸 Overview
 
-## Tech Stack
-- Python, LangChain, OpenAI Embeddings
-- FAISS (or Chroma) for vector search
-- python-dotenv for secrets
+**StrongHer** is an AI-powered postpartum and parenting support assistant built with a Retrieval-Augmented Generation (RAG) architecture. It provides single mothers with:
 
-## Quickstart
-\`\`\`bash
-python3 -m venv .venv
-source .venv/bin/activate
+- 💬 Reliable Q&A on parenting, nutrition, mental health, legal & financial guidance  
+- 📚 Verified resources from PDFs, CSVs, and expert-written documents  
+- 🎨 A calming, modular Streamlit-based UI for journaling, meal planning, and more
+
+
+## ⚙️ Tech Stack
+
+| Layer         | Tools / Frameworks                                       |
+|--------------|----------------------------------------------------------|
+| 💻 Frontend   | `Streamlit`, `Custom CSS`, `Pandas`                      |
+| 🧠 Backend    | `LangChain`, `OpenAI GPT-4o-mini`, `Prompt Engineering` |
+| 🔍 Retrieval  | `FAISS` (or `Chroma`), `OpenAI Embeddings`              |
+| 📁 Data       | `PDF`, `CSV`, `JSON` from `data/` & `static_content/`   |
+
+
+## 🚀 Quickstart
+
+```bash
+# ✅ Step 1: Install Python dependencies
 pip install -r requirements.txt
-# Put your key in .env as: OPENAI_API_KEY=sk-...
-python3 phase1.py   # builds vector index
-python3 phase2.py   # query / app logic
-python3 phase3.py   # UI / API
-\`\`\`
 
-## Repo Structure
-- \`data/\` PDFs (knowledge base)
-- \`static_content/\` CSV/JSON for app
-- \`faiss_index/\` (ignored by default; rebuilt by phase1.py)
+# ✅ Step 2: Add your OpenAI API key to a .env file
+# (Do NOT share this key publicly)
+echo "OPENAI_API_KEY=sk-..." > .env
 
-## Notes
-- Do **not** commit \`.env\` (contains secrets).
-- Git LFS tracks large assets: PDFs/PNGs/CSVs, etc.
+# ✅ Step 3: Index your documents into the FAISS vector store
+python phase1.py
+
+# ✅ Step 4: Launch the Streamlit web app
+streamlit run phase3.py
+
+# 4. Run project phases
+Step 1 : python phase1.py  # ➤ Index data into FAISS
+Step 2 : streamlit run phase3.py  # ➤ Launch Streamlit app
